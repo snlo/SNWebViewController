@@ -1,0 +1,753 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28E643C9173536E396C3D850 /* libPods-SNWebViewControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB104330468858E4224C069 /* libPods-SNWebViewControllerTests.a */; };
+		5E38FDF52FB4B208DC931882 /* libPods-SNWebViewControllerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E425D352C5331C210402971 /* libPods-SNWebViewControllerUITests.a */; };
+		9857FD9220AC0DC800A610B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FD9120AC0DC800A610B0 /* AppDelegate.m */; };
+		9857FD9520AC0DC800A610B0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FD9420AC0DC800A610B0 /* ViewController.m */; };
+		9857FD9820AC0DC800A610B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9857FD9620AC0DC800A610B0 /* Main.storyboard */; };
+		9857FD9A20AC0DC900A610B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9857FD9920AC0DC900A610B0 /* Assets.xcassets */; };
+		9857FD9D20AC0DC900A610B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9857FD9B20AC0DC900A610B0 /* LaunchScreen.storyboard */; };
+		9857FDA020AC0DC900A610B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FD9F20AC0DC900A610B0 /* main.m */; };
+		9857FDAA20AC0DCA00A610B0 /* SNWebViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDA920AC0DCA00A610B0 /* SNWebViewControllerTests.m */; };
+		9857FDB520AC0DCA00A610B0 /* SNWebViewControllerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDB420AC0DCA00A610B0 /* SNWebViewControllerUITests.m */; };
+		9857FDC520AC0E5200A610B0 /* SNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDC420AC0E5200A610B0 /* SNWebViewController.m */; };
+		9857FDC820AC0E7600A610B0 /* SNWkWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDC720AC0E7600A610B0 /* SNWkWebViewController.m */; };
+		9857FDCD20AC114E00A610B0 /* SNWebViewProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDCC20AC114E00A610B0 /* SNWebViewProtocol.m */; };
+		9857FDD220AC18C600A610B0 /* SNWkWebViewProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDD120AC18C600A610B0 /* SNWkWebViewProtocol.m */; };
+		9857FDE520AC279F00A610B0 /* TestProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDE420AC279F00A610B0 /* TestProtocol.m */; };
+		9857FDE820AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDE720AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.m */; };
+		AE36ECB042A4D78069CD196A /* libPods-SNWebViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB9DB06D56E58D0EBD825A7 /* libPods-SNWebViewController.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9857FDA620AC0DCA00A610B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9857FD8520AC0DC800A610B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9857FD8C20AC0DC800A610B0;
+			remoteInfo = SNWebViewController;
+		};
+		9857FDB120AC0DCA00A610B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9857FD8520AC0DC800A610B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9857FD8C20AC0DC800A610B0;
+			remoteInfo = SNWebViewController;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4AA92C48BD500236D238C7B6 /* Pods-SNWebViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController.debug.xcconfig"; sourceTree = "<group>"; };
+		6E425D352C5331C210402971 /* libPods-SNWebViewControllerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNWebViewControllerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BB9DB06D56E58D0EBD825A7 /* libPods-SNWebViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNWebViewController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		880CFF921C1A17382770CD65 /* Pods-SNWebViewControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewControllerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewControllerTests/Pods-SNWebViewControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		89E79629D7458ABB42532CFC /* Pods-SNWebViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController.release.xcconfig"; sourceTree = "<group>"; };
+		8BB239002DC9C104A6BBFB49 /* Pods-SNWebViewControllerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewControllerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewControllerUITests/Pods-SNWebViewControllerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9383090A7DC87E935C73B4D1 /* Pods-SNWebViewControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewControllerTests/Pods-SNWebViewControllerTests.release.xcconfig"; sourceTree = "<group>"; };
+		9857FD8D20AC0DC800A610B0 /* SNWebViewController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SNWebViewController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9857FD9020AC0DC800A610B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9857FD9120AC0DC800A610B0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9857FD9320AC0DC800A610B0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9857FD9420AC0DC800A610B0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9857FD9720AC0DC800A610B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9857FD9920AC0DC900A610B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9857FD9C20AC0DC900A610B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9857FD9E20AC0DC900A610B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9857FD9F20AC0DC900A610B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9857FDA520AC0DCA00A610B0 /* SNWebViewControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNWebViewControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9857FDA920AC0DCA00A610B0 /* SNWebViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNWebViewControllerTests.m; sourceTree = "<group>"; };
+		9857FDAB20AC0DCA00A610B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9857FDB020AC0DCA00A610B0 /* SNWebViewControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SNWebViewControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9857FDB420AC0DCA00A610B0 /* SNWebViewControllerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNWebViewControllerUITests.m; sourceTree = "<group>"; };
+		9857FDB620AC0DCA00A610B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9857FDC320AC0E5200A610B0 /* SNWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNWebViewController.h; sourceTree = "<group>"; };
+		9857FDC420AC0E5200A610B0 /* SNWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNWebViewController.m; sourceTree = "<group>"; };
+		9857FDC620AC0E7600A610B0 /* SNWkWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNWkWebViewController.h; sourceTree = "<group>"; };
+		9857FDC720AC0E7600A610B0 /* SNWkWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNWkWebViewController.m; sourceTree = "<group>"; };
+		9857FDCA20AC112300A610B0 /* SNWkWebViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNWkWebViewProtocol.h; sourceTree = "<group>"; };
+		9857FDCB20AC114E00A610B0 /* SNWebViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNWebViewProtocol.h; sourceTree = "<group>"; };
+		9857FDCC20AC114E00A610B0 /* SNWebViewProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNWebViewProtocol.m; sourceTree = "<group>"; };
+		9857FDD120AC18C600A610B0 /* SNWkWebViewProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNWkWebViewProtocol.m; sourceTree = "<group>"; };
+		9857FDE320AC278F00A610B0 /* TestProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestProtocol.h; sourceTree = "<group>"; };
+		9857FDE420AC279F00A610B0 /* TestProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestProtocol.m; sourceTree = "<group>"; };
+		9857FDE620AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtocol+SNWebViewController.h"; sourceTree = "<group>"; };
+		9857FDE720AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtocol+SNWebViewController.m"; sourceTree = "<group>"; };
+		A24BC58E5F39DD66E6615EC6 /* Pods-SNWebViewControllerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewControllerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewControllerUITests/Pods-SNWebViewControllerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		BAB104330468858E4224C069 /* libPods-SNWebViewControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNWebViewControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9857FD8A20AC0DC800A610B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE36ECB042A4D78069CD196A /* libPods-SNWebViewController.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9857FDA220AC0DCA00A610B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28E643C9173536E396C3D850 /* libPods-SNWebViewControllerTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9857FDAD20AC0DCA00A610B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E38FDF52FB4B208DC931882 /* libPods-SNWebViewControllerUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9857FD8420AC0DC800A610B0 = {
+			isa = PBXGroup;
+			children = (
+				9857FD8F20AC0DC800A610B0 /* SNWebViewController */,
+				9857FDA820AC0DCA00A610B0 /* SNWebViewControllerTests */,
+				9857FDB320AC0DCA00A610B0 /* SNWebViewControllerUITests */,
+				9857FD8E20AC0DC800A610B0 /* Products */,
+				DF26BEC464DAD2A71BD92703 /* Pods */,
+				ACEA788FBB8B6F90CBE11DBD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9857FD8E20AC0DC800A610B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9857FD8D20AC0DC800A610B0 /* SNWebViewController.app */,
+				9857FDA520AC0DCA00A610B0 /* SNWebViewControllerTests.xctest */,
+				9857FDB020AC0DCA00A610B0 /* SNWebViewControllerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9857FD8F20AC0DC800A610B0 /* SNWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9857FD9020AC0DC800A610B0 /* AppDelegate.h */,
+				9857FD9120AC0DC800A610B0 /* AppDelegate.m */,
+				9857FD9320AC0DC800A610B0 /* ViewController.h */,
+				9857FD9420AC0DC800A610B0 /* ViewController.m */,
+				9857FDE320AC278F00A610B0 /* TestProtocol.h */,
+				9857FDE420AC279F00A610B0 /* TestProtocol.m */,
+				9857FDC220AC0DD100A610B0 /* SNWebViewController */,
+				9857FD9620AC0DC800A610B0 /* Main.storyboard */,
+				9857FD9920AC0DC900A610B0 /* Assets.xcassets */,
+				9857FD9B20AC0DC900A610B0 /* LaunchScreen.storyboard */,
+				9857FD9E20AC0DC900A610B0 /* Info.plist */,
+				9857FD9F20AC0DC900A610B0 /* main.m */,
+			);
+			path = SNWebViewController;
+			sourceTree = "<group>";
+		};
+		9857FDA820AC0DCA00A610B0 /* SNWebViewControllerTests */ = {
+			isa = PBXGroup;
+			children = (
+				9857FDA920AC0DCA00A610B0 /* SNWebViewControllerTests.m */,
+				9857FDAB20AC0DCA00A610B0 /* Info.plist */,
+			);
+			path = SNWebViewControllerTests;
+			sourceTree = "<group>";
+		};
+		9857FDB320AC0DCA00A610B0 /* SNWebViewControllerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9857FDB420AC0DCA00A610B0 /* SNWebViewControllerUITests.m */,
+				9857FDB620AC0DCA00A610B0 /* Info.plist */,
+			);
+			path = SNWebViewControllerUITests;
+			sourceTree = "<group>";
+		};
+		9857FDC220AC0DD100A610B0 /* SNWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9857FDC320AC0E5200A610B0 /* SNWebViewController.h */,
+				9857FDC420AC0E5200A610B0 /* SNWebViewController.m */,
+				9857FDC620AC0E7600A610B0 /* SNWkWebViewController.h */,
+				9857FDC720AC0E7600A610B0 /* SNWkWebViewController.m */,
+				9857FDE620AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.h */,
+				9857FDE720AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.m */,
+				9857FDC920AC0E8000A610B0 /* Protocols  */,
+			);
+			path = SNWebViewController;
+			sourceTree = "<group>";
+		};
+		9857FDC920AC0E8000A610B0 /* Protocols  */ = {
+			isa = PBXGroup;
+			children = (
+				9857FDCB20AC114E00A610B0 /* SNWebViewProtocol.h */,
+				9857FDCC20AC114E00A610B0 /* SNWebViewProtocol.m */,
+				9857FDCA20AC112300A610B0 /* SNWkWebViewProtocol.h */,
+				9857FDD120AC18C600A610B0 /* SNWkWebViewProtocol.m */,
+			);
+			path = "Protocols ";
+			sourceTree = "<group>";
+		};
+		ACEA788FBB8B6F90CBE11DBD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BB9DB06D56E58D0EBD825A7 /* libPods-SNWebViewController.a */,
+				BAB104330468858E4224C069 /* libPods-SNWebViewControllerTests.a */,
+				6E425D352C5331C210402971 /* libPods-SNWebViewControllerUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF26BEC464DAD2A71BD92703 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4AA92C48BD500236D238C7B6 /* Pods-SNWebViewController.debug.xcconfig */,
+				89E79629D7458ABB42532CFC /* Pods-SNWebViewController.release.xcconfig */,
+				880CFF921C1A17382770CD65 /* Pods-SNWebViewControllerTests.debug.xcconfig */,
+				9383090A7DC87E935C73B4D1 /* Pods-SNWebViewControllerTests.release.xcconfig */,
+				8BB239002DC9C104A6BBFB49 /* Pods-SNWebViewControllerUITests.debug.xcconfig */,
+				A24BC58E5F39DD66E6615EC6 /* Pods-SNWebViewControllerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9857FD8C20AC0DC800A610B0 /* SNWebViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9857FDB920AC0DCA00A610B0 /* Build configuration list for PBXNativeTarget "SNWebViewController" */;
+			buildPhases = (
+				E90CD7BD075D1B592C171485 /* [CP] Check Pods Manifest.lock */,
+				9857FD8920AC0DC800A610B0 /* Sources */,
+				9857FD8A20AC0DC800A610B0 /* Frameworks */,
+				9857FD8B20AC0DC800A610B0 /* Resources */,
+				083815165F640DBCE26617DF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SNWebViewController;
+			productName = SNWebViewController;
+			productReference = 9857FD8D20AC0DC800A610B0 /* SNWebViewController.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9857FDA420AC0DCA00A610B0 /* SNWebViewControllerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9857FDBC20AC0DCA00A610B0 /* Build configuration list for PBXNativeTarget "SNWebViewControllerTests" */;
+			buildPhases = (
+				B2FFA9E819C7A928B9C037B0 /* [CP] Check Pods Manifest.lock */,
+				9857FDA120AC0DCA00A610B0 /* Sources */,
+				9857FDA220AC0DCA00A610B0 /* Frameworks */,
+				9857FDA320AC0DCA00A610B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9857FDA720AC0DCA00A610B0 /* PBXTargetDependency */,
+			);
+			name = SNWebViewControllerTests;
+			productName = SNWebViewControllerTests;
+			productReference = 9857FDA520AC0DCA00A610B0 /* SNWebViewControllerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9857FDAF20AC0DCA00A610B0 /* SNWebViewControllerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9857FDBF20AC0DCA00A610B0 /* Build configuration list for PBXNativeTarget "SNWebViewControllerUITests" */;
+			buildPhases = (
+				F13FF82CC14D816E1C5F8F4B /* [CP] Check Pods Manifest.lock */,
+				9857FDAC20AC0DCA00A610B0 /* Sources */,
+				9857FDAD20AC0DCA00A610B0 /* Frameworks */,
+				9857FDAE20AC0DCA00A610B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9857FDB220AC0DCA00A610B0 /* PBXTargetDependency */,
+			);
+			name = SNWebViewControllerUITests;
+			productName = SNWebViewControllerUITests;
+			productReference = 9857FDB020AC0DCA00A610B0 /* SNWebViewControllerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9857FD8520AC0DC800A610B0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = snlo;
+				TargetAttributes = {
+					9857FD8C20AC0DC800A610B0 = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+					9857FDA420AC0DCA00A610B0 = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = 9857FD8C20AC0DC800A610B0;
+					};
+					9857FDAF20AC0DCA00A610B0 = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = 9857FD8C20AC0DC800A610B0;
+					};
+				};
+			};
+			buildConfigurationList = 9857FD8820AC0DC800A610B0 /* Build configuration list for PBXProject "SNWebViewController" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9857FD8420AC0DC800A610B0;
+			productRefGroup = 9857FD8E20AC0DC800A610B0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9857FD8C20AC0DC800A610B0 /* SNWebViewController */,
+				9857FDA420AC0DCA00A610B0 /* SNWebViewControllerTests */,
+				9857FDAF20AC0DCA00A610B0 /* SNWebViewControllerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9857FD8B20AC0DC800A610B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9857FD9D20AC0DC900A610B0 /* LaunchScreen.storyboard in Resources */,
+				9857FD9A20AC0DC900A610B0 /* Assets.xcassets in Resources */,
+				9857FD9820AC0DC800A610B0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9857FDA320AC0DCA00A610B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9857FDAE20AC0DCA00A610B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		083815165F640DBCE26617DF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController-resources.sh",
+				"${PODS_ROOT}/SNTool/SNTool/SNTool/SNTool.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SNTool.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2FFA9E819C7A928B9C037B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SNWebViewControllerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E90CD7BD075D1B592C171485 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SNWebViewController-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F13FF82CC14D816E1C5F8F4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SNWebViewControllerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9857FD8920AC0DC800A610B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9857FDD220AC18C600A610B0 /* SNWkWebViewProtocol.m in Sources */,
+				9857FDCD20AC114E00A610B0 /* SNWebViewProtocol.m in Sources */,
+				9857FDC820AC0E7600A610B0 /* SNWkWebViewController.m in Sources */,
+				9857FDE520AC279F00A610B0 /* TestProtocol.m in Sources */,
+				9857FDE820AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.m in Sources */,
+				9857FD9520AC0DC800A610B0 /* ViewController.m in Sources */,
+				9857FDA020AC0DC900A610B0 /* main.m in Sources */,
+				9857FDC520AC0E5200A610B0 /* SNWebViewController.m in Sources */,
+				9857FD9220AC0DC800A610B0 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9857FDA120AC0DCA00A610B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9857FDAA20AC0DCA00A610B0 /* SNWebViewControllerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9857FDAC20AC0DCA00A610B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9857FDB520AC0DCA00A610B0 /* SNWebViewControllerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9857FDA720AC0DCA00A610B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9857FD8C20AC0DC800A610B0 /* SNWebViewController */;
+			targetProxy = 9857FDA620AC0DCA00A610B0 /* PBXContainerItemProxy */;
+		};
+		9857FDB220AC0DCA00A610B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9857FD8C20AC0DC800A610B0 /* SNWebViewController */;
+			targetProxy = 9857FDB120AC0DCA00A610B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9857FD9620AC0DC800A610B0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9857FD9720AC0DC800A610B0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9857FD9B20AC0DC900A610B0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9857FD9C20AC0DC900A610B0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9857FDB720AC0DCA00A610B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9857FDB820AC0DCA00A610B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9857FDBA20AC0DCA00A610B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AA92C48BD500236D238C7B6 /* Pods-SNWebViewController.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SNWebViewController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = snlo.SNWebViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9857FDBB20AC0DCA00A610B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89E79629D7458ABB42532CFC /* Pods-SNWebViewController.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SNWebViewController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = snlo.SNWebViewController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9857FDBD20AC0DCA00A610B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 880CFF921C1A17382770CD65 /* Pods-SNWebViewControllerTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SNWebViewControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = snlo.SNWebViewControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNWebViewController.app/SNWebViewController";
+			};
+			name = Debug;
+		};
+		9857FDBE20AC0DCA00A610B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9383090A7DC87E935C73B4D1 /* Pods-SNWebViewControllerTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SNWebViewControllerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = snlo.SNWebViewControllerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SNWebViewController.app/SNWebViewController";
+			};
+			name = Release;
+		};
+		9857FDC020AC0DCA00A610B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BB239002DC9C104A6BBFB49 /* Pods-SNWebViewControllerUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SNWebViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = snlo.SNWebViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SNWebViewController;
+			};
+			name = Debug;
+		};
+		9857FDC120AC0DCA00A610B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A24BC58E5F39DD66E6615EC6 /* Pods-SNWebViewControllerUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SNWebViewControllerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = snlo.SNWebViewControllerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SNWebViewController;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9857FD8820AC0DC800A610B0 /* Build configuration list for PBXProject "SNWebViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9857FDB720AC0DCA00A610B0 /* Debug */,
+				9857FDB820AC0DCA00A610B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9857FDB920AC0DCA00A610B0 /* Build configuration list for PBXNativeTarget "SNWebViewController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9857FDBA20AC0DCA00A610B0 /* Debug */,
+				9857FDBB20AC0DCA00A610B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9857FDBC20AC0DCA00A610B0 /* Build configuration list for PBXNativeTarget "SNWebViewControllerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9857FDBD20AC0DCA00A610B0 /* Debug */,
+				9857FDBE20AC0DCA00A610B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9857FDBF20AC0DCA00A610B0 /* Build configuration list for PBXNativeTarget "SNWebViewControllerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9857FDC020AC0DCA00A610B0 /* Debug */,
+				9857FDC120AC0DCA00A610B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9857FD8520AC0DC800A610B0 /* Project object */;
+}
