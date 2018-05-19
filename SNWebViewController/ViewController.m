@@ -36,8 +36,8 @@
     
     
     self.reloadUrl = @"https://www.baidu.com";
-//    self.isHasNativeNavigation = YES;
-    
+    self.isHasNativeNavigation = YES;
+	
     [RACObserve(self, webTitle) subscribeNext:^(id  _Nullable x) {
         self.title = x;
     }];

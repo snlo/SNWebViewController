@@ -12,7 +12,7 @@
 
 #import "SNWkWebViewController.h"
 
-@interface ViewController : SNWebViewController
+@interface ViewController : SNWkWebViewController
 
 
 @end
