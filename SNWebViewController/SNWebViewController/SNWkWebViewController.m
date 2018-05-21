@@ -144,7 +144,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
 	
 	[RACObserve(self.webview, frame) subscribeNext:^(id  _Nullable x) {
-		if ([SNTool topViewController].navigationController.navigationBar) {
+		if ([SNTool topViewController].navigationController.navigationBar && ![SNTool topViewController].navigationController.navigationBar.hidden) {
 			CGFloat offset = [SNTool statusBarHeight] + [SNTool navigationBarHeight] - self.webview.frame.origin.y;
 			self.progressView.frame = CGRectMake(0, offset > 0 ? offset : 0, SCREEN_WIDTH, 3);
 		} else {
