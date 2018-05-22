@@ -136,7 +136,10 @@
 #pragma mark -- public methods
 - (void)setURLProtocolClass:(Class)class scriptMessageHandlerNames:(NSArray <NSString *> *)names {
     self.classURLProtocol = class;
-    self.scriptMessageHandlerNames = [NSMutableArray arrayWithArray:names];
+    if (names.count > 0) {
+        [self.scriptMessageHandlerNames addObjectsFromArray:names];
+        [self handleScriptMessageHandlerNames:self.scriptMessageHandlerNames];
+    }
 }
 
 #pragma mark -- private methods
@@ -144,7 +147,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
 	
 	[RACObserve(self.webview, frame) subscribeNext:^(id  _Nullable x) {
-		if ([SNTool topViewController].navigationController.navigationBar && ![SNTool topViewController].navigationController.navigationBar.hidden) {
+		if ([SNTool topViewController].navigationController.navigationBar && self.isHasNativeNavigation) {
 			CGFloat offset = [SNTool statusBarHeight] + [SNTool navigationBarHeight] - self.webview.frame.origin.y;
 			self.progressView.frame = CGRectMake(0, offset > 0 ? offset : 0, SCREEN_WIDTH, 3);
 		} else {
@@ -269,16 +272,30 @@
         }
     }
 }
-- (void)setScriptMessageHandlerNames:(NSMutableArray<NSString *> *)scriptMessageHandlerNames {
-    _scriptMessageHandlerNames = scriptMessageHandlerNames;
+- (NSMutableArray<NSString *> *)scriptMessageHandlerNames {
+    if (!_scriptMessageHandlerNames) {
+        _scriptMessageHandlerNames = [[NSMutableArray alloc] init];
+    } return _scriptMessageHandlerNames;
+}
+- (void)handleScriptMessageHandlerNames:(NSMutableArray<NSString *> *)scriptMessageHandlerNames {
     
     [self.scriptMessageHandlerNames addObject:self.postNameByNative];
     
-    if (_scriptMessageHandlerNames) {
-        [_scriptMessageHandlerNames enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [self.webview.configuration.userContentController addScriptMessageHandler:self name:obj];
+    if (self.scriptMessageHandlerNames.count > 1) { //去重
+        NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+        [self.scriptMessageHandlerNames enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [dic setValue:@(idx) forKey:obj];
         }];
+        [self.scriptMessageHandlerNames removeAllObjects];
+        [self.scriptMessageHandlerNames addObjectsFromArray:dic.allKeys];
     }
+    
+    [self.scriptMessageHandlerNames enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        [self.webview.configuration.userContentController removeScriptMessageHandlerForName:obj];
+        
+        [self.webview.configuration.userContentController addScriptMessageHandler:self name:obj];
+    }];
 }
 
 @synthesize postNameByNative = _postNameByNative;
