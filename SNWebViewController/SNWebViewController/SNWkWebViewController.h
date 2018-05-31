@@ -67,4 +67,9 @@
  */
 @property (nonatomic, strong) UIProgressView * progressView;
 
+/**
+ 设置选中和复选框
+ */
+- (void)setNoneSelect:(BOOL)selected;
+
 @end

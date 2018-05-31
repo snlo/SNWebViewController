@@ -35,7 +35,7 @@
     self.view.backgroundColor = [UIColor redColor];
     
     
-    self.reloadUrl = @"https://www.baidu.com";
+    self.reloadUrl = @"http://dev.aitelife.com/owner/mall/index.html#!/";
     self.isHasNativeNavigation = YES;
 	
     [RACObserve(self, webTitle) subscribeNext:^(id  _Nullable x) {
@@ -55,6 +55,10 @@
     [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         [self.webview goBack];
     }];
+    
+    self.webview.scrollView.bounces = YES;
+    
+    [self setNoneSelect:YES];
     
 }
 
