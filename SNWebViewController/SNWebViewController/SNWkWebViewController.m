@@ -109,6 +109,10 @@
         } else {
             [muDic setValue:obj forKey:key];
         }
+        if ([obj isKindOfClass:[NSArray class]]) {
+            NSArray * arr = obj;
+            [muDic setValue:[arr sn_json] forKey:key];
+        }
     }];
     
     [SNNetworking loadingInvalid];
@@ -201,6 +205,23 @@
         // javascript注入
         WKUserScript *noneSelectScript = [[WKUserScript alloc] initWithSource:javascript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
         [self.webview.configuration.userContentController addUserScript:noneSelectScript];
+    }
+}
+- (void)clearAllWebsiteDataTypes:(void(^)(void))block {
+    if ([WKWebsiteDataStore performSelector:NSSelectorFromString(@"setAllowsAirPlayForMediaPlayback")]) {
+        NSSet *websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
+        //// Date from
+        NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+        //// Execute
+        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
+            //         Done
+            if (block) {
+                block();
+            } else {
+                self.reloadUrl = self.reloadUrl;
+            }
+        }];
+        [self reloadUrl];
     }
 }
 

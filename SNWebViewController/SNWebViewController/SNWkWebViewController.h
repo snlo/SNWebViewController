@@ -72,4 +72,9 @@
  */
 - (void)setNoneSelect:(BOOL)selected;
 
+/**
+ 清理所以web缓存并刷新，在H5的首页
+ */
+- (void)clearAllWebsiteDataTypes:(void(^)(void))block;
+
 @end
