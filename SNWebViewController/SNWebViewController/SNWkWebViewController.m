@@ -208,7 +208,7 @@
     }
 }
 - (void)clearAllWebsiteDataTypes:(void(^)(void))block {
-    if ([WKWebsiteDataStore performSelector:NSSelectorFromString(@"setAllowsAirPlayForMediaPlayback")]) {
+    if ([self.webview respondsToSelector:NSSelectorFromString(@"customUserAgent")]) {
         NSSet *websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
         //// Date from
         NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
