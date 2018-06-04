@@ -99,26 +99,33 @@
 #pragma mark -- event response
 - (void)handlePostJsByNative:(id)body {
     NSDictionary * dic = [NSDictionary dictionaryWithDictionary:body];
-
+    
     __block NSString * urlString = @"";
+    __block NSString * callBackString = @"";
     __block NSMutableDictionary * muDic = [[NSMutableDictionary alloc] init];
-
+    
     [dic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         if ([key isEqualToString:@"url"]) {
             urlString = obj;
+        } else if ([key isEqualToString:@"callbackFun"]) {
+            callBackString = obj;
         } else {
-            [muDic setValue:obj forKey:key];
-        }
-        if ([obj isKindOfClass:[NSArray class]]) {
-            NSArray * arr = obj;
-            [muDic setValue:[arr sn_json] forKey:key];
+            if ([obj isKindOfClass:[NSArray class]]) {
+                NSArray * arr = obj;
+                [muDic setValue:[arr sn_json] forKey:key];
+            } else {
+                [muDic setValue:obj forKey:key];
+            }
         }
     }];
+    if (callBackString.length < 1) {
+        callBackString = @"postCallback";
+    }
     
     [SNNetworking loadingInvalid];
-    [SNNetworking postWithUrl:SNString(@"%@/%@",[SNNetworking sharedManager].basrUrl,urlString) parameters:muDic progress:nil success:^(id responseObject) {
+    [SNNetworking postWithUrl:SNString(@"%@%@",[SNNetworking sharedManager].basrUrl,urlString) parameters:muDic progress:nil success:^(id responseObject) {
         [SNNetworking loadingRecovery];
-        [self.webview evaluateJavaScript:[NSString stringWithFormat:@"postCallback('%@')",
+        [self.webview evaluateJavaScript:[NSString stringWithFormat:@"%@('%@')",callBackString,
                                           [responseObject sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
             if (!error) {
                 [self.subjectPostJs sendNext:@{@"url":urlString,@"data":responseObject,@"fromdata":muDic}];
@@ -127,7 +134,7 @@
     } failure:^(NSError *error) {
         [SNNetworking loadingRecovery];
         [self.subjectPostJs sendNext:@{@"error":SNString(@"%ld",(long)error.code)}];
-        [self.webview evaluateJavaScript:[NSString stringWithFormat:@"postCallback('%@')",[@{@"code":SNString(@"%ld",(long)error.code)} sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+        [self.webview evaluateJavaScript:[NSString stringWithFormat:@"%@('%@')",callBackString, [@{@"code":SNString(@"%ld",(long)error.code)} sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"%@",error);
             } else {
@@ -233,7 +240,9 @@
         WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
         config.selectionGranularity = WKSelectionGranularityCharacter;
         config.allowsInlineMediaPlayback = YES; // 允许在线播放
-        config.allowsAirPlayForMediaPlayback = YES; //允许视频播放
+        if ([config respondsToSelector:@selector(allowsAirPlayForMediaPlayback)]) {
+            config.allowsAirPlayForMediaPlayback = YES; //允许视频播放
+        }
         config.selectionGranularity = YES; // 允许可以与网页交互，选择视图
         config.suppressesIncrementalRendering = YES; // 是否支持记忆读取
         config.processPool = [[WKProcessPool alloc] init]; // web内容处理池
