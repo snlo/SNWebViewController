@@ -116,7 +116,7 @@
     }];
     
     [SNNetworking loadingInvalid];
-    [SNNetworking postWithUrl:SNString(@"%@%@",[SNNetworking sharedManager].basrUrl,urlString) parameters:muDic progress:nil success:^(id responseObject) {
+    [SNNetworking postWithUrl:SNString(@"%@/%@",[SNNetworking sharedManager].basrUrl,urlString) parameters:muDic progress:nil success:^(id responseObject) {
         [SNNetworking loadingRecovery];
         [self.webview evaluateJavaScript:[NSString stringWithFormat:@"postCallback('%@')",
                                           [responseObject sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
