@@ -59,6 +59,7 @@
 
 /**
  返回post处理结果给JS端的函数名默认为‘postCallback’。报文中‘code’为处理结果错误码
+ body中{@"url":@"....",@"callbackMethodName(必须包含‘call’和‘back’不区分大小写)":@"...."...}
  */
 @property (nonatomic, strong) NSString * postCallbackNameByNative;
 

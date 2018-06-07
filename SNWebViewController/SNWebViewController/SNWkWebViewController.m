@@ -107,7 +107,8 @@
     [dic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         if ([key isEqualToString:@"url"]) {
             urlString = obj;
-        } else if ([key isEqualToString:@"callbackFun"]) {
+        } else if ([key localizedCaseInsensitiveContainsString:@"call"]
+                   && [key localizedCaseInsensitiveContainsString:@"back"]) {
             callBackString = obj;
         } else {
             if ([obj isKindOfClass:[NSArray class]]) {
