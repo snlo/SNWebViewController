@@ -159,7 +159,7 @@
 	
 	[RACObserve(self.webview, frame) subscribeNext:^(id  _Nullable x) {
 		if ([SNTool topViewController].navigationController.navigationBar && self.isHasNativeNavigation) {
-			CGFloat offset = [SNTool statusBarHeight] + [SNTool navigationBarHeight] - self.webview.frame.origin.y;
+			CGFloat offset = [SNTool statusBarHeight]+[SNTool navigationBarHeight] - self.webview.frame.origin.y;
 			self.progressView.frame = CGRectMake(0, offset > 0 ? offset : 0, SCREEN_WIDTH, 3);
 		} else {
 			self.progressView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 3);
