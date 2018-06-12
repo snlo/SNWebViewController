@@ -13,6 +13,8 @@
 
 #import "SNWkWebViewProtocol.h"
 
+#import "SNWebTool.h"
+
 @class RACSubject;
 
 @interface SNWkWebViewController : UIViewController <WKNavigationDelegate, WKUIDelegate,WKScriptMessageHandler,UINavigationControllerDelegate, SNWkWebViewProtocol>

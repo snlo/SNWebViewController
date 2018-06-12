@@ -98,30 +98,11 @@
 
 #pragma mark -- event response
 - (void)handlePostJsByNative:(id)body {
-    NSDictionary * dic = [NSDictionary dictionaryWithDictionary:body];
     
     __block NSString * urlString = @"";
     __block NSString * callBackString = @"";
-    __block NSMutableDictionary * muDic = [[NSMutableDictionary alloc] init];
-    
-    [dic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        if ([key isEqualToString:@"url"]) {
-            urlString = obj;
-        } else if ([key localizedCaseInsensitiveContainsString:@"call"]
-                   && [key localizedCaseInsensitiveContainsString:@"back"]) {
-            callBackString = obj;
-        } else {
-            if ([obj isKindOfClass:[NSArray class]]) {
-                NSArray * arr = obj;
-                [muDic setValue:[arr sn_json] forKey:key];
-            } else {
-                [muDic setValue:obj forKey:key];
-            }
-        }
-    }];
-    if (callBackString.length < 1) {
-        callBackString = @"postCallback";
-    }
+    __block NSMutableDictionary * muDic =
+    [SNWebTool handleJsBody:body urlString:&urlString callBackString:&callBackString];
     
     [SNNetworking loadingInvalid];
     [SNNetworking postWithUrl:SNString(@"%@%@",[SNNetworking sharedManager].basrUrl,urlString) parameters:muDic progress:nil success:^(id responseObject) {

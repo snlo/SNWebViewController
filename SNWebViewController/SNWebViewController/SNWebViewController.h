@@ -13,6 +13,8 @@
 
 #import "SNWebViewProtocol.h"
 
+#import "SNWebTool.h"
+
 @interface SNWebViewController : UIViewController <UIWebViewDelegate, SNWebViewProtocol>
 
 /**

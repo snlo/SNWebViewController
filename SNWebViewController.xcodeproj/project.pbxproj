@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		28E643C9173536E396C3D850 /* libPods-SNWebViewControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB104330468858E4224C069 /* libPods-SNWebViewControllerTests.a */; };
 		5E38FDF52FB4B208DC931882 /* libPods-SNWebViewControllerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E425D352C5331C210402971 /* libPods-SNWebViewControllerUITests.a */; };
+		9807C2A420CF5B35006FCDDF /* SNWebTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9807C2A320CF5B35006FCDDF /* SNWebTool.m */; };
 		9823049D20C8C2A5006B8FA5 /* WKWebView+SNSafeCookies.m in Sources */ = {isa = PBXBuildFile; fileRef = 9823048E20C8C2A4006B8FA5 /* WKWebView+SNSafeCookies.m */; };
 		9823049E20C8C2A5006B8FA5 /* WKWebView+SNSafeEvaluateJS.m in Sources */ = {isa = PBXBuildFile; fileRef = 9823048F20C8C2A4006B8FA5 /* WKWebView+SNSafeEvaluateJS.m */; };
 		9823049F20C8C2A5006B8FA5 /* WKWebView+SNSyncConfigUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9823049320C8C2A5006B8FA5 /* WKWebView+SNSyncConfigUserAgent.m */; };
@@ -57,6 +58,8 @@
 		89E79629D7458ABB42532CFC /* Pods-SNWebViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController.release.xcconfig"; sourceTree = "<group>"; };
 		8BB239002DC9C104A6BBFB49 /* Pods-SNWebViewControllerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewControllerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewControllerUITests/Pods-SNWebViewControllerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9383090A7DC87E935C73B4D1 /* Pods-SNWebViewControllerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewControllerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewControllerTests/Pods-SNWebViewControllerTests.release.xcconfig"; sourceTree = "<group>"; };
+		9807C2A220CF5B35006FCDDF /* SNWebTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SNWebTool.h; sourceTree = "<group>"; };
+		9807C2A320CF5B35006FCDDF /* SNWebTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SNWebTool.m; sourceTree = "<group>"; };
 		9823048C20C8C2A4006B8FA5 /* WKWebView+SNSyncConfigUserAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKWebView+SNSyncConfigUserAgent.h"; sourceTree = "<group>"; };
 		9823048D20C8C2A4006B8FA5 /* WKWebView+SNSafeCookies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WKWebView+SNSafeCookies.h"; sourceTree = "<group>"; };
 		9823048E20C8C2A4006B8FA5 /* WKWebView+SNSafeCookies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+SNSafeCookies.m"; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 				9857FDC420AC0E5200A610B0 /* SNWebViewController.m */,
 				9857FDC620AC0E7600A610B0 /* SNWkWebViewController.h */,
 				9857FDC720AC0E7600A610B0 /* SNWkWebViewController.m */,
+				9807C2A220CF5B35006FCDDF /* SNWebTool.h */,
+				9807C2A320CF5B35006FCDDF /* SNWebTool.m */,
 				9823048920C8C247006B8FA5 /* Categories */,
 				9857FDC920AC0E8000A610B0 /* Protocols  */,
 			);
@@ -470,6 +475,7 @@
 				9857FDD220AC18C600A610B0 /* SNWkWebViewProtocol.m in Sources */,
 				9823049F20C8C2A5006B8FA5 /* WKWebView+SNSyncConfigUserAgent.m in Sources */,
 				9857FDCD20AC114E00A610B0 /* SNWebViewProtocol.m in Sources */,
+				9807C2A420CF5B35006FCDDF /* SNWebTool.m in Sources */,
 				9857FDC820AC0E7600A610B0 /* SNWkWebViewController.m in Sources */,
 				9857FDE520AC279F00A610B0 /* TestProtocol.m in Sources */,
 				982304A120C8C2A5006B8FA5 /* WKWebView+SNSafeClearCache.m in Sources */,
