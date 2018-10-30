@@ -47,7 +47,7 @@
     [super viewWillDisappear:animated];
     
     if (!self.isHasNativeNavigation) {
-        [SNTool fetchNavigationController].navigationBar.hidden = NO;
+//        [SNTool fetchNavigationController].navigationBar.hidden = NO;
     }
 }
 
