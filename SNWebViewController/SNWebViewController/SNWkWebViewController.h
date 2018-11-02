@@ -71,6 +71,11 @@
 @property (nonatomic, strong) UIProgressView * progressView;
 
 /**
+ 精确的精度条位置
+ */
+@property (nonatomic, assign) CGFloat originYprogressView;
+
+/**
  设置选中和复选框
  */
 - (void)setNoneSelect:(BOOL)selected;

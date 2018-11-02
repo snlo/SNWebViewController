@@ -140,12 +140,16 @@
     self.view.backgroundColor = [UIColor whiteColor];
 	
 	[RACObserve(self.webview, frame) subscribeNext:^(id  _Nullable x) {
-		if ([SNTool topViewController].navigationController.navigationBar && self.isHasNativeNavigation) {
-			CGFloat offset = [SNTool statusBarHeight]+[SNTool navigationBarHeight] - self.webview.frame.origin.y;
-			self.progressView.frame = CGRectMake(0, offset > 0 ? offset : 0, SCREEN_WIDTH, 3);
-		} else {
-			self.progressView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 3);
-		}
+        if ([SNTool topViewController].navigationController.navigationBar && self.isHasNativeNavigation && ![SNTool topViewController].navigationController.navigationBar.hidden) {
+            CGFloat offset = [SNTool statusBarHeight]+[SNTool navigationBarHeight] - self.webview.frame.origin.y;
+            self.progressView.frame = CGRectMake(0, offset > 0 ? offset : 0, SCREEN_WIDTH, 3);
+        } else {
+            if (self.originYprogressView > 1) {
+                self.progressView.frame = CGRectMake(0, self.originYprogressView, SCREEN_WIDTH, 3);
+            } else {
+                self.progressView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 3);
+            }
+        }
 	}];
 }
 - (void)base_web_configureDataSource {
