@@ -104,9 +104,7 @@
     __block NSMutableDictionary * muDic =
     [SNWebTool handleJsBody:body urlString:&urlString callBackString:&callBackString];
     
-    [SNNetworking loadingInvalid];
-    [SNNetworking postWithUrl:SNString(@"%@%@",[SNNetworking sharedManager].basrUrl,urlString) parameters:muDic progress:nil success:^(id responseObject) {
-        [SNNetworking loadingRecovery];
+    NSURLSessionDataTask * task = [SNNetworking postWithUrl:SNString(@"%@%@",[SNNetworking sharedManager].baseUrl,urlString) parameters:muDic progress:nil success:^(id responseObject) {
         [self.webview evaluateJavaScript:[NSString stringWithFormat:@"%@('%@')",callBackString,
                                           [responseObject sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
             if (!error) {
@@ -114,7 +112,6 @@
             }
         }];
     } failure:^(NSError *error) {
-        [SNNetworking loadingRecovery];
         [self.subjectPostJs sendNext:@{@"error":SNString(@"%ld",(long)error.code)}];
         [self.webview evaluateJavaScript:[NSString stringWithFormat:@"%@('%@')",callBackString, [@{@"code":SNString(@"%ld",(long)error.code)} sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
             if (error) {
@@ -124,6 +121,7 @@
             }
         }];
     }];
+    [SNNetworking donotShowLoadingViewAtTask:task];
 }
 
 #pragma mark -- public methods

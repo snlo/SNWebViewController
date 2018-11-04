@@ -20,6 +20,8 @@
 #define kStatusBarAndNavigationBarHeight (kIs_iPhoneX ? 88.f : 64.f)
 #define kTabbarHeight (kIs_iPhoneX ? 83.f : 49.f)
 
+#define kRatio_375(x) (x * SCREEN_WIDTH) / 375.f
+
 /**
  image about
  */
@@ -57,8 +59,6 @@ vc.automaticallyAdjustsScrollViewInsets = NO;\
 }\
 _Pragma("clang diagnostic pop") \
 } while (0)
-
-
 
 /**
  关于log
