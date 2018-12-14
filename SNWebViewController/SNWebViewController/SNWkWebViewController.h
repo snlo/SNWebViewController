@@ -85,4 +85,9 @@
  */
 - (void)clearAllWebsiteDataTypes:(void(^)(void))block;
 
+/**
+ 加载失败的回调，也可以在子类中实现相关代理
+ */
+- (void)didFailProvisionalNavigationBlock:(void(^)(WKNavigation * navigation, NSError *error))block;
+
 @end

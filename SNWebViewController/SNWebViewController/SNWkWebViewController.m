@@ -17,11 +17,15 @@
 
 #import "NSURLProtocol+SNWebViewController.h"
 
+typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSError *error);
+
 @interface SNWkWebViewController ()
 
 @property (nonatomic) Class classURLProtocol;
 @property (nonatomic, strong) NSMutableArray <NSString *> * scriptMessageHandlerNames;
 @property (nonatomic, strong) NSString * webTitle;
+
+@property (nonatomic, copy) DidFailProvisionalNavigationBlock didFailProvisionalNavigationBlock;
 
 @end
 
@@ -94,7 +98,18 @@
     }])];
     [self presentViewController:alertController animated:YES completion:nil];
 }
+#pragma mark -- WKNavigationDelegate
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    if (self.didFailProvisionalNavigationBlock) {
+        self.didFailProvisionalNavigationBlock(navigation, error);
+    }
+}
 #pragma mark -- CustomDelegate
+- (void)didFailProvisionalNavigationBlock:(void(^)(WKNavigation * navigation, NSError *error))block {
+    if (block) {
+        self.didFailProvisionalNavigationBlock = block;
+    }
+}
 
 #pragma mark -- event response
 - (void)handlePostJsByNative:(id)body {
@@ -290,7 +305,7 @@
 - (void)setReloadUrl:(NSString *)reloadUrl {
     _reloadUrl = reloadUrl;
     
-    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_reloadUrl] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:5.0]];
+    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_reloadUrl] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0]];
 #warning cache for webview
     //    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_reloadUrl]]];
 }
