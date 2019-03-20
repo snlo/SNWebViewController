@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <SNConcreteProtocol.h>
+#import <SNTool/SNConcreteProtocol.h>
 
 #import "SNWKWebViewCategories.h"
 

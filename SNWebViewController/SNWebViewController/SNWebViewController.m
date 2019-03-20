@@ -8,10 +8,10 @@
 
 #import "SNWebViewController.h"
 
-#import <ReactiveObjC.h>
-#import <SNTool.h>
+#import <ReactiveObjC/ReactiveObjC.h>
+#import <SNTool/SNTool.h>
 
-#import <SNDownTimer.h>
+#import <SNDownTimer/SNDownTimer.h>
 
 #import "NSURLProtocol+SNWebViewController.h"
 

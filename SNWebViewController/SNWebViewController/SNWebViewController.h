@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import <WebKit/WebKit.h>
-#import <WebViewJavascriptBridge.h>
+#import <WebViewJavascriptBridge/WebViewJavascriptBridge.h>
 
 #import "SNWebViewProtocol.h"
 

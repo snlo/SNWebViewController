@@ -8,12 +8,12 @@
 
 #import "SNWkWebViewController.h"
 
-#import <ReactiveObjC.h>
-#import <SNTool.h>
-#import <Aspects.h>
+#import <ReactiveObjC/ReactiveObjC.h>
+#import <SNTool/SNTool.h>
+#import <Aspects/Aspects.h>
 
-#import <SNNetworking.h>
-#import <SNFoundation.h>
+#import <SNNetworking/SNNetworking.h>
+#import <SNFoundation/SNFoundation.h>
 
 #import "NSURLProtocol+SNWebViewController.h"
 
