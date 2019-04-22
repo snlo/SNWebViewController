@@ -35,7 +35,7 @@
     self.view.backgroundColor = [UIColor redColor];
     
     
-    self.reloadUrl = @"http://dev.aitelife.com/owner/mall/index.html#!/";
+    self.reloadUrl = @"http://www.baidu.com/";
     self.isHasNativeNavigation = YES;
 	
     [RACObserve(self, webTitle) subscribeNext:^(id  _Nullable x) {
