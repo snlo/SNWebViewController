@@ -15,4 +15,6 @@
  */
 + (void)sn_safeClearAllCache;
 
+- (void)sn_clearBrowseHistory;
+
 @end

@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SNWebViewController.h"
 
 #import "SNWkWebViewController.h"
 

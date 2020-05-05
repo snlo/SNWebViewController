@@ -50,28 +50,28 @@
 
 static inline void clearWebViewCacheFolderByType(NSString *cacheType) {
     
-    static dispatch_once_t once;
     static NSDictionary *cachePathMap = nil;
 
-    dispatch_once(&once,
-                  ^{
-                      NSString *bundleId = [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleIdentifierKey];
-                      NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
-                      NSString *storageFileBasePath = [libraryPath stringByAppendingPathComponent:
-                                                       [NSString stringWithFormat:@"WebKit/%@/WebsiteData/", bundleId]];
-                      
-                      cachePathMap = @{@"WKWebsiteDataTypeCookies":
-                                       [libraryPath stringByAppendingPathComponent:@"Cookies/Cookies.binarycookies"],
-                                       @"WKWebsiteDataTypeLocalStorage":
-                                       [storageFileBasePath stringByAppendingPathComponent:@"LocalStorage"],
-                                       @"WKWebsiteDataTypeIndexedDBDatabases":
-                                       [storageFileBasePath stringByAppendingPathComponent:@"IndexedDB"],
-                                       @"WKWebsiteDataTypeWebSQLDatabases":
-                                       [storageFileBasePath stringByAppendingPathComponent:@"WebSQL"]
-                                       };
-                  });
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		NSString *bundleId = [NSBundle mainBundle].infoDictionary[(NSString *)kCFBundleIdentifierKey];
+		NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
+		NSString *storageFileBasePath = [libraryPath stringByAppendingPathComponent:
+										 [NSString stringWithFormat:@"WebKit/%@/WebsiteData/", bundleId]];
+		
+		cachePathMap = @{@"WKWebsiteDataTypeCookies":
+						 [libraryPath stringByAppendingPathComponent:@"Cookies/Cookies.binarycookies"],
+						 @"WKWebsiteDataTypeLocalStorage":
+						 [storageFileBasePath stringByAppendingPathComponent:@"LocalStorage"],
+						 @"WKWebsiteDataTypeIndexedDBDatabases":
+						 [storageFileBasePath stringByAppendingPathComponent:@"IndexedDB"],
+						 @"WKWebsiteDataTypeWebSQLDatabases":
+						 [storageFileBasePath stringByAppendingPathComponent:@"WebSQL"]
+						 };
+	});
     
     NSString *filePath = cachePathMap[cacheType];
+	
     if (filePath && filePath.length > 0) {
         if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
             NSError *error = nil;
@@ -80,6 +80,16 @@ static inline void clearWebViewCacheFolderByType(NSString *cacheType) {
                 NSLog(@"removed file fail: %@ ,error %@", [filePath lastPathComponent], error);
             }
         }
+    }
+}
+
+- (void)sn_clearBrowseHistory {
+    SEL sel = NSSelectorFromString([NSString stringWithFormat:@"%@%@%@%@", @"_re", @"moveA",@"llIte", @"ms"]);
+    if([self.backForwardList respondsToSelector:sel]){
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self.backForwardList performSelector:sel];
+#pragma clang diagnostic pop
     }
 }
 

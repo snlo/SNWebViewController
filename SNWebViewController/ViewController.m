@@ -14,11 +14,17 @@
 
 #import <ReactiveObjC.h>
 
+#import "MallBaseURLProtocol.h"
+
 @interface ViewController () <TestProtocol>
 
 @end
 
 @implementation ViewController
+
+- (void)dealloc {
+	NSLog(@"%s",__func__);
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -34,16 +40,19 @@
     
     self.view.backgroundColor = [UIColor redColor];
     
-    
     self.reloadUrl = @"http://www.baidu.com/";
     self.isHasNativeNavigation = YES;
 	
-    [RACObserve(self, webTitle) subscribeNext:^(id  _Nullable x) {
-        self.title = x;
-    }];
+	@weakify(self);
+//	self.webTitle = @"xxx";
+//    [RACObserve(self, webTitle) subscribeNext:^(id  _Nullable x) {
+//        self_weak_.title = x;
+//    }];
+//	self.allowSettingTitle = NO;
+//	self.title = @"xxx";
     self.progressView.tintColor = [UIColor greenColor];
-    
-    
+//	[self setNoneSelect:YES];
+	
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeSystem];
     
@@ -52,15 +61,27 @@
     [button setTitle:@"返回" forState:UIControlStateNormal];
     [self.webview addSubview:button];
     
+	
     [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        [self.webview goBack];
+        [self_weak_.webview goBack];
     }];
     
     self.webview.scrollView.bounces = YES;
     
     [self setNoneSelect:YES];
+	
+	[self setURLProtocolClass:[MallBaseURLProtocol class] scriptMessageHandlerNames:@[@"asdf"]];
     
+
+	[RACObserve(self.webview, URL) subscribeNext:^(NSURL *  _Nullable x) {
+		NSLog(@"url == %@",x.absoluteString);
+
+	}];
+	
 }
+//- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+//	NSLog(@"%s",__func__);
+//}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -79,6 +100,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 @end

@@ -8,7 +8,6 @@
 
 #import "SNWebTool.h"
 
-#import <SNTool/SNTool.h>
 #import <SNFoundation/SNFoundation.h>
 
 @implementation SNWebTool

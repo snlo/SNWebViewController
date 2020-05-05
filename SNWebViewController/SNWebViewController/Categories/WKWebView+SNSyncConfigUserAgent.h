@@ -19,8 +19,8 @@ typedef NS_ENUM (NSInteger, SNConfigUserAgentType){
  *  Sync Config UA Without WKWebView
  *
  *  @param type            replace or append original UA
- *  @param customString    custom UA string
+ *  @param customUserAgent    custom UA string
  */
-+ (void)sn_configCustomUAWithType:(SNConfigUserAgentType)type userAgentString:(NSString *)customString;
+- (void)sn_configCustomUAWithType:(SNConfigUserAgentType)type customUserAgent:(NSString *)customUserAgent;
 
 @end

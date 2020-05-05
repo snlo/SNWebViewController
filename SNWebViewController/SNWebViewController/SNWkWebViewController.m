@@ -17,6 +17,8 @@
 
 #import "NSURLProtocol+SNWebViewController.h"
 
+#import <Masonry.h>
+
 typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSError *error);
 
 @interface SNWkWebViewController ()
@@ -34,6 +36,7 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     [self.scriptMessageHandlerNames enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self.webview.configuration.userContentController removeScriptMessageHandlerForName:obj];
     }];
+	NSLog(@"%s",__func__);
 }
 #pragma mark -- life cycle
 - (void)viewWillAppear:(BOOL)animated {
@@ -44,15 +47,22 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     } else {
         [SNTool fetchNavigationController].navigationBar.hidden = NO;
     }
-    adjustsScrollViewInsets_NO(self.webview.scrollView, self);
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
     if (!self.isHasNativeNavigation) {
-//        [SNTool fetchNavigationController].navigationBar.hidden = NO;
+        [SNTool fetchNavigationController].navigationBar.hidden = NO;
     }
+}
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	
+	[self.scriptMessageHandlerNames enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.webview.configuration.userContentController removeScriptMessageHandlerForName:obj];
+    }];
 }
 
 - (void)viewDidLoad {
@@ -64,8 +74,7 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    
-    self.webview.frame = CGRectMake(0, [SNTool statusBarHeight], SCREEN_WIDTH, SCREEN_HEIGHT - [SNTool homeBarHeight] - [SNTool statusBarHeight]);
+	
 }
 
 #pragma mark -- <WKScriptMessageHandler>、、
@@ -100,8 +109,9 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
 }
 #pragma mark -- WKNavigationDelegate
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+	@weakify(self);
     if (self.didFailProvisionalNavigationBlock) {
-        self.didFailProvisionalNavigationBlock(navigation, error);
+        self_weak_.didFailProvisionalNavigationBlock(navigation, error);
     }
 }
 #pragma mark -- CustomDelegate
@@ -119,16 +129,16 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     __block NSMutableDictionary * muDic =
     [SNWebTool handleJsBody:body urlString:&urlString callBackString:&callBackString];
     
+	@weakify(self);
     NSURLSessionDataTask * task = [SNNetworking postWithUrl:SNString(@"%@%@",[SNNetworking sharedManager].baseUrl,urlString) parameters:muDic progress:nil success:^(id responseObject) {
-        [self.webview evaluateJavaScript:[NSString stringWithFormat:@"%@('%@')",callBackString,
-                                          [responseObject sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+        [self_weak_.webview evaluateJavaScript:[NSString stringWithFormat:@"%@('%@')",callBackString, [responseObject sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
             if (!error) {
-                [self.subjectPostJs sendNext:@{@"url":urlString,@"data":responseObject,@"fromdata":muDic}];
+                [self_weak_.subjectPostJs sendNext:@{@"url":urlString,@"data":responseObject,@"fromdata":muDic}];
             }
         }];
     } failure:^(NSError *error) {
-        [self.subjectPostJs sendNext:@{@"error":SNString(@"%ld",(long)error.code)}];
-        [self.webview evaluateJavaScript:[NSString stringWithFormat:@"%@('%@')",callBackString, [@{@"code":SNString(@"%ld",(long)error.code)} sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
+        [self_weak_.subjectPostJs sendNext:@{@"error":SNString(@"%ld",(long)error.code)}];
+        [self_weak_.webview evaluateJavaScript:[NSString stringWithFormat:@"%@('%@')",callBackString, [@{@"code":SNString(@"%ld",(long)error.code)} sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"%@",error);
             } else {
@@ -152,37 +162,34 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
 - (void)base_web_configureUserInterface {
     self.view.backgroundColor = [UIColor whiteColor];
 	
-	[RACObserve(self.webview, frame) subscribeNext:^(id  _Nullable x) {
-        if ([SNTool topViewController].navigationController.navigationBar && self.isHasNativeNavigation && ![SNTool topViewController].navigationController.navigationBar.hidden) {
-            CGFloat offset = [SNTool statusBarHeight]+[SNTool navigationBarHeight] - self.webview.frame.origin.y;
-            self.progressView.frame = CGRectMake(0, offset > 0 ? offset : 0, SCREEN_WIDTH, 3);
-        } else {
-            if (self.originYprogressView > 1) {
-                self.progressView.frame = CGRectMake(0, self.originYprogressView, SCREEN_WIDTH, 3);
-            } else {
-                self.progressView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 3);
-            }
-        }
+	[self webview];
+	@weakify(self);
+	[self.webview mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.top.equalTo(self_weak_.view.mas_safeAreaLayoutGuideTop).offset(0.0);
+		make.left.equalTo(self_weak_.view.mas_left).offset(0.0);
+		make.right.equalTo(self_weak_.view.mas_right).offset(0.0);
+		make.bottom.equalTo(self_weak_.view.mas_bottom).offset(0.0);
 	}];
+
 }
 - (void)base_web_configureDataSource {
     
     self.allowSettingTitle = YES;
     
-//    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.reloadUrl]]];
-    
+	@weakify(self);
     [RACObserve(self.webview, estimatedProgress) subscribeNext:^(id  _Nullable x) {
 #pragma mark -- 进度条
-        self.progressView.progress = [x floatValue];
-        self.progressView.hidden = NO;
+        self_weak_.progressView.progress = [x floatValue];
+        self_weak_.progressView.hidden = NO;
         if ([x floatValue] == 1.0) {
-            self.progressView.progress = 0.0;
-            self.progressView.hidden = YES;
+            self_weak_.progressView.progress = 0.0;
+            self_weak_.progressView.hidden = YES;
         }
     }];
     [RACObserve(self.webview, title) subscribeNext:^(id  _Nullable x) {
-        if (self.allowSettingTitle) {
-            self.webTitle = x;
+        if (self_weak_.allowSettingTitle) {
+			@strongify(self);
+            self.webTitle = self.title = x;
         }
     }];
     
@@ -190,9 +197,16 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     NSError * error;
     [self aspect_hookSelector:@selector(userContentController:didReceiveScriptMessage:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, WKUserContentController * userContentController, WKScriptMessage * message) {
         
-        if ([message.name isEqualToString:self.postNameByNative]) {
-            [self handlePostJsByNative:message.body];
+        if ([message.name isEqualToString:self_weak_.postNameByNative]) {
+            [self_weak_ handlePostJsByNative:message.body];
         }
+    } error:&error];
+	
+	[self aspect_hookSelector:@selector(webView:didFinishNavigation:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, WKWebView * webView, WKNavigation * navigation) {
+		//web背景白色
+		[webView evaluateJavaScript:@"document.body.style.backgroundColor=\"#ffffff\"" completionHandler:nil];
+		//禁止选中
+		[webView evaluateJavaScript:@"document.documentElement.style.webkitUserSelect='none';" completionHandler:nil];
     } error:&error];
 }
 
@@ -216,15 +230,18 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
 - (void)clearAllWebsiteDataTypes:(void(^)(void))block {
     if ([self.webview respondsToSelector:NSSelectorFromString(@"customUserAgent")]) {
         NSSet *websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
-        //// Date from
+        // Date from
         NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
-        //// Execute
+        // Execute
+		
+		@weakify(self);
         [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
-            //         Done
+            // Done
             if (block) {
                 block();
             } else {
-                self.reloadUrl = self.reloadUrl;
+				@strongify(self);
+                self.reloadUrl = self_weak_.reloadUrl;
             }
         }];
         [self reloadUrl];
@@ -282,14 +299,6 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
         [self.webview addSubview:_progressView];
     } return _progressView;
 }
-- (WebViewJavascriptBridge *)bridge {
-    if (!_bridge) {
-        [WebViewJavascriptBridge enableLogging];
-        
-        _bridge = [WebViewJavascriptBridge bridgeForWebView:self.webview];
-        [_bridge setWebViewDelegate:self];
-    } return _bridge;
-}
 
 - (RACSubject *)subjectPostJs {
     if (!_subjectPostJs) {
@@ -298,7 +307,7 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
 }
 
 
-#pragma mark -- setter
+#pragma mark -- setterr
 - (void)setIsHasNativeNavigation:(BOOL)isHasNativeNavigation {
     _isHasNativeNavigation = isHasNativeNavigation;
 }
@@ -306,8 +315,6 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     _reloadUrl = reloadUrl;
     
     [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_reloadUrl] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0]];
-#warning cache for webview
-    //    [self.webview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_reloadUrl]]];
 }
 - (void)setClassURLProtocol:(Class)classURLProtocol {
     _classURLProtocol = classURLProtocol;
@@ -327,21 +334,22 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
 - (void)handleScriptMessageHandlerNames:(NSMutableArray<NSString *> *)scriptMessageHandlerNames {
     
     [self.scriptMessageHandlerNames addObject:self.postNameByNative];
-    
+	
+	@weakify(self);
     if (self.scriptMessageHandlerNames.count > 1) { //去重
         NSMutableDictionary * dic = [NSMutableDictionary dictionary];
         [self.scriptMessageHandlerNames enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [dic setValue:@(idx) forKey:obj];
         }];
-        [self.scriptMessageHandlerNames removeAllObjects];
-        [self.scriptMessageHandlerNames addObjectsFromArray:dic.allKeys];
+        [self_weak_.scriptMessageHandlerNames removeAllObjects];
+        [self_weak_.scriptMessageHandlerNames addObjectsFromArray:dic.allKeys];
     }
-    
+	
     [self.scriptMessageHandlerNames enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        [self.webview.configuration.userContentController removeScriptMessageHandlerForName:obj];
-        
-        [self.webview.configuration.userContentController addScriptMessageHandler:self name:obj];
+
+        [self_weak_.webview.configuration.userContentController removeScriptMessageHandlerForName:obj];
+
+        [self_weak_.webview.configuration.userContentController addScriptMessageHandler:self_weak_ name:obj];
     }];
 }
 

@@ -14,6 +14,7 @@ target 'SNWebViewController' do
   pod 'SNNetworking'
   pod 'SNFoundation'
   pod 'SNDownTimer'
+	pod 'Masonry'
 
   target 'SNWebViewControllerTests' do
     inherit! :search_paths

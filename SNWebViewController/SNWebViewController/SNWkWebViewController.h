@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import <WebKit/WebKit.h>
-#import <WebViewJavascriptBridge/WebViewJavascriptBridge.h>
 
 #import "SNWkWebViewProtocol.h"
 
@@ -25,14 +24,9 @@
 @property (nonatomic, strong) WKWebView * webview;
 
 /**
- JS桥接
- */
-@property (nonatomic) WebViewJavascriptBridge * bridge;
-
-/**
  加载链接
  */
-@property (nonatomic, strong) NSString * reloadUrl;
+@property (nonatomic, copy) NSString * reloadUrl;
 
 /**
  标题，用于区别self.title
@@ -57,13 +51,13 @@
 /**
  提供给JS端的post函数名默认为‘handlePostJsByNative’。参数必须包含‘url’字段
  */
-@property (nonatomic, strong) NSString * postNameByNative;
+@property (nonatomic, copy) NSString * postNameByNative;
 
 /**
  返回post处理结果给JS端的函数名默认为‘postCallback’。报文中‘code’为处理结果错误码
  body中{@"url":@"....",@"callbackMethodName(必须包含‘call’和‘back’不区分大小写)":@"...."...}
  */
-@property (nonatomic, strong) NSString * postCallbackNameByNative;
+@property (nonatomic, copy) NSString * postCallbackNameByNative;
 
 /**
  进度条
