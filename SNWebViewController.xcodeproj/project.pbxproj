@@ -185,8 +185,8 @@
 			children = (
 				9857FD9020AC0DC800A610B0 /* AppDelegate.h */,
 				9857FD9120AC0DC800A610B0 /* AppDelegate.m */,
-				5EE51B45246125F800BAF4A5 /* RootViewController.h */,
 				5EE51B46246125F800BAF4A5 /* RootViewController.m */,
+				5EE51B45246125F800BAF4A5 /* RootViewController.h */,
 				9857FD9320AC0DC800A610B0 /* ViewController.h */,
 				9857FD9420AC0DC800A610B0 /* ViewController.m */,
 				5EE51B4C24613EA400BAF4A5 /* MallBaseURLProtocol.h */,

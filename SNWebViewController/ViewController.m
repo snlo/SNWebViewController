@@ -41,7 +41,8 @@
     self.view.backgroundColor = [UIColor redColor];
     
     self.reloadUrl = @"http://www.baidu.com/";
-    self.isHasNativeNavigation = YES;
+//    self.isHasNativeNavigation = YES;
+	self.isHasNativeNavigation = NO;
 	
 	@weakify(self);
 //	self.webTitle = @"xxx";
@@ -79,9 +80,6 @@
 	}];
 	
 }
-//- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-//	NSLog(@"%s",__func__);
-//}
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

@@ -134,12 +134,12 @@ Pod::Spec.new do |s|
 
   s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
 
-  s.dependency 'SNTool'
   s.dependency 'Aspects'
   s.dependency 'ReactiveObjC'
   s.dependency 'WebViewJavascriptBridge'
   s.dependency 'SNNetworking'
   s.dependency 'SNFoundation'
   s.dependency 'SNDownTimer'
+  s.dependency 'Masonry'
 
 end

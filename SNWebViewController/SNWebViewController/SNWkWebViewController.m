@@ -9,15 +9,13 @@
 #import "SNWkWebViewController.h"
 
 #import <ReactiveObjC/ReactiveObjC.h>
-#import <SNTool/SNTool.h>
 #import <Aspects/Aspects.h>
 
+#import <SNTool/SNTool.h>
 #import <SNNetworking/SNNetworking.h>
 #import <SNFoundation/SNFoundation.h>
 
 #import "NSURLProtocol+SNWebViewController.h"
-
-#import <Masonry.h>
 
 typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSError *error);
 
@@ -36,16 +34,15 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     [self.scriptMessageHandlerNames enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [self.webview.configuration.userContentController removeScriptMessageHandlerForName:obj];
     }];
-	NSLog(@"%s",__func__);
 }
 #pragma mark -- life cycle
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     if (!self.isHasNativeNavigation) {
-        [SNTool fetchNavigationController].navigationBar.hidden = YES;
+		self.navigationController.navigationBar.hidden = YES;
     } else {
-        [SNTool fetchNavigationController].navigationBar.hidden = NO;
+		self.navigationController.navigationBar.hidden = NO;
     }
     
 }
@@ -54,7 +51,7 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     [super viewWillDisappear:animated];
     
     if (!self.isHasNativeNavigation) {
-        [SNTool fetchNavigationController].navigationBar.hidden = NO;
+		self.navigationController.navigationBar.hidden = YES;
     }
 }
 - (void)viewDidDisappear:(BOOL)animated {
@@ -78,9 +75,8 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
 }
 
 #pragma mark -- <WKScriptMessageHandler>、、
-- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    NSLog(@"%@",message.body);
-}
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message { }
+
 #pragma mark - WKUIDelegate
 - (WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
     if (!navigationAction.targetFrame.isMainFrame) {
@@ -89,7 +85,7 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     return nil;
 }
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
-    NSLog(@"%@",message);
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:([UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         completionHandler();
@@ -97,7 +93,7 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     [self presentViewController:alertController animated:YES completion:nil];
 }
 - (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL))completionHandler {
-    NSLog(@"%@",message);
+    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message?:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:([UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         completionHandler(NO);
@@ -107,6 +103,7 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     }])];
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
 #pragma mark -- WKNavigationDelegate
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
 	@weakify(self);
@@ -114,6 +111,8 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
         self_weak_.didFailProvisionalNavigationBlock(navigation, error);
     }
 }
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation { }
+
 #pragma mark -- CustomDelegate
 - (void)didFailProvisionalNavigationBlock:(void(^)(WKNavigation * navigation, NSError *error))block {
     if (block) {
@@ -126,11 +125,11 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     
     __block NSString * urlString = @"";
     __block NSString * callBackString = @"";
-    __block NSMutableDictionary * muDic =
-    [SNWebTool handleJsBody:body urlString:&urlString callBackString:&callBackString];
+    __block NSMutableDictionary * muDic = [SNWebTool handleJsBody:body urlString:&urlString callBackString:&callBackString];
     
 	@weakify(self);
     NSURLSessionDataTask * task = [SNNetworking postWithUrl:SNString(@"%@%@",[SNNetworking sharedManager].baseUrl,urlString) parameters:muDic progress:nil success:^(id responseObject) {
+		
         [self_weak_.webview evaluateJavaScript:[NSString stringWithFormat:@"%@('%@')",callBackString, [responseObject sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
             if (!error) {
                 [self_weak_.subjectPostJs sendNext:@{@"url":urlString,@"data":responseObject,@"fromdata":muDic}];
@@ -139,11 +138,7 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     } failure:^(NSError *error) {
         [self_weak_.subjectPostJs sendNext:@{@"error":SNString(@"%ld",(long)error.code)}];
         [self_weak_.webview evaluateJavaScript:[NSString stringWithFormat:@"%@('%@')",callBackString, [@{@"code":SNString(@"%ld",(long)error.code)} sn_json]] completionHandler:^(id _Nullable data, NSError * _Nullable error) {
-            if (error) {
-                NSLog(@"%@",error);
-            } else {
-                NSLog(@"%@",data);
-            }
+            if (error) {} else {}
         }];
     }];
     [SNNetworking donotShowLoadingViewAtTask:task];
@@ -163,13 +158,12 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
     self.view.backgroundColor = [UIColor whiteColor];
 	
 	[self webview];
-	@weakify(self);
-	[self.webview mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.top.equalTo(self_weak_.view.mas_safeAreaLayoutGuideTop).offset(0.0);
-		make.left.equalTo(self_weak_.view.mas_left).offset(0.0);
-		make.right.equalTo(self_weak_.view.mas_right).offset(0.0);
-		make.bottom.equalTo(self_weak_.view.mas_bottom).offset(0.0);
-	}];
+
+	self.webview.translatesAutoresizingMaskIntoConstraints = NO;
+	[self.webview.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:0.0].active = YES;
+	[self.webview.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:0.0].active = YES;
+	[self.webview.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:0.0].active = YES;
+	[self.webview.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:0.0].active = YES;
 
 }
 - (void)base_web_configureDataSource {
@@ -270,7 +264,7 @@ typedef void(^DidFailProvisionalNavigationBlock)(WKNavigation * navigation, NSEr
         WKUserContentController *user = [[WKUserContentController alloc]init];
         config.userContentController = user;
         
-        _webview = [[WKWebView alloc] initWithFrame:CGRectMake(0, [SNTool statusBarHeight], SCREEN_WIDTH, SCREEN_HEIGHT - [SNTool homeBarHeight] - [SNTool statusBarHeight]) configuration:config];
+        _webview = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) configuration:config];
         
         if ([_webview respondsToSelector:@selector(setNavigationDelegate:)]) {
             _webview.navigationDelegate = self;
