@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		28E643C9173536E396C3D850 /* libPods-SNWebViewControllerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB104330468858E4224C069 /* libPods-SNWebViewControllerTests.a */; };
-		5E38FDF52FB4B208DC931882 /* libPods-SNWebViewControllerUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E425D352C5331C210402971 /* libPods-SNWebViewControllerUITests.a */; };
+		52FAAFA07AD3CA05565117D3 /* Pods_SNWebViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BEE6715F79EBB288297F316 /* Pods_SNWebViewController.framework */; };
 		5EE51B47246125F800BAF4A5 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE51B46246125F800BAF4A5 /* RootViewController.m */; };
 		5EE51B4D24613EA400BAF4A5 /* MallBaseURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE51B4B24613EA400BAF4A5 /* MallBaseURLProtocol.m */; };
+		67BC35200BDE2936E578EED5 /* Pods_SNWebViewControllerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11208AAE025472289229EB7D /* Pods_SNWebViewControllerUITests.framework */; };
+		7928C790C8F10D081DBB8A69 /* Pods_SNWebViewControllerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8732161D044929031B1A1CC4 /* Pods_SNWebViewControllerTests.framework */; };
 		9807C2A420CF5B35006FCDDF /* SNWebTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9807C2A320CF5B35006FCDDF /* SNWebTool.m */; };
 		9823049D20C8C2A5006B8FA5 /* WKWebView+SNSafeCookies.m in Sources */ = {isa = PBXBuildFile; fileRef = 9823048E20C8C2A4006B8FA5 /* WKWebView+SNSafeCookies.m */; };
 		9823049E20C8C2A5006B8FA5 /* WKWebView+SNSafeEvaluateJS.m in Sources */ = {isa = PBXBuildFile; fileRef = 9823048F20C8C2A4006B8FA5 /* WKWebView+SNSafeEvaluateJS.m */; };
@@ -31,7 +32,6 @@
 		9857FDD220AC18C600A610B0 /* SNWkWebViewProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDD120AC18C600A610B0 /* SNWkWebViewProtocol.m */; };
 		9857FDE520AC279F00A610B0 /* TestProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDE420AC279F00A610B0 /* TestProtocol.m */; };
 		9857FDE820AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9857FDE720AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.m */; };
-		AE36ECB042A4D78069CD196A /* libPods-SNWebViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BB9DB06D56E58D0EBD825A7 /* libPods-SNWebViewController.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,13 +52,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BEE6715F79EBB288297F316 /* Pods_SNWebViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SNWebViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11208AAE025472289229EB7D /* Pods_SNWebViewControllerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SNWebViewControllerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AA92C48BD500236D238C7B6 /* Pods-SNWebViewController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController.debug.xcconfig"; sourceTree = "<group>"; };
 		5EE51B45246125F800BAF4A5 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		5EE51B46246125F800BAF4A5 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		5EE51B4B24613EA400BAF4A5 /* MallBaseURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MallBaseURLProtocol.m; sourceTree = "<group>"; };
 		5EE51B4C24613EA400BAF4A5 /* MallBaseURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MallBaseURLProtocol.h; sourceTree = "<group>"; };
-		6E425D352C5331C210402971 /* libPods-SNWebViewControllerUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNWebViewControllerUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BB9DB06D56E58D0EBD825A7 /* libPods-SNWebViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNWebViewController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8732161D044929031B1A1CC4 /* Pods_SNWebViewControllerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SNWebViewControllerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		880CFF921C1A17382770CD65 /* Pods-SNWebViewControllerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewControllerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewControllerTests/Pods-SNWebViewControllerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		89E79629D7458ABB42532CFC /* Pods-SNWebViewController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewController.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController.release.xcconfig"; sourceTree = "<group>"; };
 		8BB239002DC9C104A6BBFB49 /* Pods-SNWebViewControllerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewControllerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewControllerUITests/Pods-SNWebViewControllerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,7 +106,6 @@
 		9857FDE620AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtocol+SNWebViewController.h"; sourceTree = "<group>"; };
 		9857FDE720AC2C4100A610B0 /* NSURLProtocol+SNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtocol+SNWebViewController.m"; sourceTree = "<group>"; };
 		A24BC58E5F39DD66E6615EC6 /* Pods-SNWebViewControllerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SNWebViewControllerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SNWebViewControllerUITests/Pods-SNWebViewControllerUITests.release.xcconfig"; sourceTree = "<group>"; };
-		BAB104330468858E4224C069 /* libPods-SNWebViewControllerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SNWebViewControllerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE36ECB042A4D78069CD196A /* libPods-SNWebViewController.a in Frameworks */,
+				52FAAFA07AD3CA05565117D3 /* Pods_SNWebViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28E643C9173536E396C3D850 /* libPods-SNWebViewControllerTests.a in Frameworks */,
+				7928C790C8F10D081DBB8A69 /* Pods_SNWebViewControllerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E38FDF52FB4B208DC931882 /* libPods-SNWebViewControllerUITests.a in Frameworks */,
+				67BC35200BDE2936E578EED5 /* Pods_SNWebViewControllerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,9 +248,9 @@
 		ACEA788FBB8B6F90CBE11DBD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7BB9DB06D56E58D0EBD825A7 /* libPods-SNWebViewController.a */,
-				BAB104330468858E4224C069 /* libPods-SNWebViewControllerTests.a */,
-				6E425D352C5331C210402971 /* libPods-SNWebViewControllerUITests.a */,
+				0BEE6715F79EBB288297F316 /* Pods_SNWebViewController.framework */,
+				8732161D044929031B1A1CC4 /* Pods_SNWebViewControllerTests.framework */,
+				11208AAE025472289229EB7D /* Pods_SNWebViewControllerUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 				9857FD8920AC0DC800A610B0 /* Sources */,
 				9857FD8A20AC0DC800A610B0 /* Frameworks */,
 				9857FD8B20AC0DC800A610B0 /* Resources */,
-				083815165F640DBCE26617DF /* [CP] Copy Pods Resources */,
+				CCF4A727D9F066936C251529 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -398,23 +398,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		083815165F640DBCE26617DF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B2FFA9E819C7A928B9C037B0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -431,6 +414,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCF4A727D9F066936C251529 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SNWebViewController/Pods-SNWebViewController-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E90CD7BD075D1B592C171485 /* [CP] Check Pods Manifest.lock */ = {
